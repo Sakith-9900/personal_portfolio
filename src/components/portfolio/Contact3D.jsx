@@ -7,16 +7,16 @@ import { Github, Linkedin, Mail, Twitter, Send, MapPin, Phone } from 'lucide-rea
 import { toast } from 'sonner';
 
 const socialLinks = [
-  { icon: Github, label: 'GitHub', href: '#', color: '#fff' },
-  { icon: Linkedin, label: 'LinkedIn', href: '#', color: '#0077b5' },
-  { icon: Twitter, label: 'Twitter', href: '#', color: '#1da1f2' },
-  { icon: Mail, label: 'Email', href: 'mailto:hello@sakith.dev', color: '#ea4335' },
+  { icon: Github, label: 'GitHub', href: 'https://github.com/Sakith-9900', color: '#fff' },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/sakith-gunarathna-581334352/', color: '#0077b5' },
+  { icon: Twitter, label: 'Twitter', href: 'https://x.com/home', color: '#1da1f2' },
+  { icon: Mail, label: 'Email', href: 'sakithmandira@gmail.com', color: '#ea4335' },
 ];
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'hello@sakith.dev' },
-  { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567' },
-  { icon: MapPin, label: 'Location', value: 'San Francisco, CA' },
+  { icon: Mail, label: 'Email', value: 'sakithmandira@gmail.com' },
+  { icon: Phone, label: 'Phone', value: '+94 77 007 6363' },
+  { icon: MapPin, label: 'Location', value: 'Colombo,Srilanka' },
 ];
 
 export default function Contact3D() {
