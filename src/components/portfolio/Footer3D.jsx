@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, ArrowUp } from 'lucide-react';
 
 const socialLinks = [
   { icon: Github, href: 'https://github.com/Sakith-9900', label: 'GitHub' },
@@ -10,10 +10,12 @@ const socialLinks = [
 ];
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
+  { label: 'Home',     href: '#' },
+  { label: 'About',    href: '#about' },
+  { label: 'Skills',   href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'GitHub',   href: '#github-activity' },
+  { label: 'Contact',  href: '#contact' },
 ];
 
 export default function Footer3D() {
@@ -28,19 +30,18 @@ export default function Footer3D() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-cyan-500/5 to-transparent rounded-full blur-[100px]" />
       </div>
 
-      {/* Scroll to top button */}
-      <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-        <motion.button
-          onClick={scrollToTop}
-          whileHover={{ scale: 1.1, y: -5 }}
-          whileTap={{ scale: 0.95 }}
-          className="p-4 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-shadow"
-        >
-          <ArrowUp className="w-5 h-5" />
-        </motion.button>
-      </div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-20 pb-8">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-12 pb-8">
+        {/* Scroll to top button */}
+        <div className="flex justify-center mb-10">
+          <motion.button
+            onClick={scrollToTop}
+            whileHover={{ scale: 1.1, y: -5 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-4 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-shadow"
+          >
+            <ArrowUp className="w-5 h-5" />
+          </motion.button>
+        </div>
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
@@ -122,12 +123,9 @@ export default function Footer3D() {
         <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-8" />
 
         {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <div className="flex justify-center items-center text-sm text-gray-500">
           <p>
             © {new Date().getFullYear()} Sakith Mandira. All rights reserved.
-          </p>
-          <p className="flex items-center gap-1">
-            Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> using React & Three.js
           </p>
         </div>
       </div>
