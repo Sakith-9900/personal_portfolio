@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Hero3D from '../components/portfolio/Hero3D';
 import About from '../components/portfolio/About';
 import Skills3D from '../components/portfolio/Skills3D';
+import GitHubActivity from '../components/portfolio/GitHubActivity';
 import Projects3D from '../components/portfolio/Projects3D';
 import Contact3D from '../components/portfolio/Contact3D';
 import Footer3D from '../components/portfolio/Footer3D';
@@ -121,8 +122,9 @@ export default function Home() {
         >
           <Hero3D />
           <About />
-          <Skills3D />
           <Projects3D />
+          <Skills3D />
+          <GitHubActivity />
           <Contact3D />
           <Footer3D />
         </motion.main>
