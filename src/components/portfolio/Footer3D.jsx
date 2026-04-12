@@ -16,6 +16,7 @@ const navLinks = [
   { label: 'Projects', href: '#projects' },
   { label: 'GitHub',   href: '#github-activity' },
   { label: 'Contact',  href: '#contact' },
+  { label: 'Resume',   href: '/sakith_cv.pdf', external: true },
 ];
 
 export default function Footer3D() {
@@ -86,6 +87,8 @@ export default function Footer3D() {
                 >
                   <a 
                     href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
                     className="text-gray-500 hover:text-cyan-400 transition-colors text-sm inline-flex items-center gap-2 group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-gray-700 group-hover:bg-cyan-400 transition-colors" />

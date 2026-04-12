@@ -221,6 +221,7 @@ const NAV_LINKS = [
   { label: 'PROJECTS', href: '#projects' },
   { label: 'GITHUB',   href: '#github-activity' },
   { label: 'CONTACT',  href: '#contact' },
+  { label: 'RESUME',   href: '/sakith_cv.pdf', external: true },
 ];
 
 function HamburgerNav({ isLoading }) {
@@ -303,12 +304,14 @@ function HamburgerNav({ isLoading }) {
               exit="exit"
               className="flex flex-col items-center gap-6"
             >
-              {NAV_LINKS.map(({ label, href }) => (
+              {NAV_LINKS.map(({ label, href, external }) => (
                 <motion.a
                   key={label}
                   href={href}
+                  target={external ? '_blank' : undefined}
+                  rel={external ? 'noopener noreferrer' : undefined}
                   variants={itemVariants}
-                  onClick={handleLinkClick}
+                  onClick={external ? undefined : handleLinkClick}
                   className="relative text-white font-black uppercase tracking-wide text-center group"
                   style={{ fontSize: 'clamp(2rem, 6vw, 3.75rem)', letterSpacing: '0.05em' }}
                   whileHover={{ x: 6 }}

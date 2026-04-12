@@ -223,7 +223,7 @@ export default function Hero3D() {
 
             {/* Resume button */}
             <motion.a
-              href="/Sakith_cv.pdf"
+              href="/sakith_cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative px-8 py-4 overflow-hidden rounded-full border border-cyan-500/40 hover:border-cyan-400/80 transition-colors duration-300"
