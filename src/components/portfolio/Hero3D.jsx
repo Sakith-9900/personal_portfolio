@@ -194,28 +194,51 @@ export default function Hero3D() {
             Crafting digital experiences that blend stunning visuals with powerful functionality
           </motion.p>
 
-          <motion.button
-            onClick={scrollToProjects}
-            className="group relative px-8 py-4 overflow-hidden rounded-full"
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute inset-[1px] bg-[#0a0a1a] rounded-full" />
-            <span className="relative z-10 flex items-center gap-2 text-white font-medium">
-              View My Work
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                →
-              </motion.span>
-            </span>
-          </motion.button>
+            {/* View My Work button */}
+            <motion.button
+              onClick={scrollToProjects}
+              className="group relative px-8 py-4 overflow-hidden rounded-full"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-[1px] bg-[#0a0a1a] rounded-full" />
+              <span className="relative z-10 flex items-center gap-2 text-white font-medium">
+                View My Work
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </span>
+            </motion.button>
+
+            {/* Resume button */}
+            <motion.a
+              href="/Sakith_cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative px-8 py-4 overflow-hidden rounded-full border border-cyan-500/40 hover:border-cyan-400/80 transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="relative z-10 flex items-center gap-2 text-white font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h4a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                </svg>
+                Resume
+              </span>
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
 
