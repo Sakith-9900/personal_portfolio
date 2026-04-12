@@ -116,11 +116,12 @@ export default function Hero3D() {
 
     window.addEventListener('resize', handleResize);
 
+    const container = containerRef.current; // capture before cleanup
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
-      if (containerRef.current && renderer.domElement) {
-        containerRef.current.removeChild(renderer.domElement);
+      if (container && renderer.domElement) {
+        container.removeChild(renderer.domElement);
       }
       renderer.dispose();
     };

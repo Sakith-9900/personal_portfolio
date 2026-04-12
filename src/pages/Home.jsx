@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import Hero3D from '../components/portfolio/Hero3D';
 import About from '../components/portfolio/About';
 import Skills3D from '../components/portfolio/Skills3D';

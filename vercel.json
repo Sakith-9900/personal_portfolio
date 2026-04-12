@@ -1,4 +1,7 @@
 {
+  "buildCommand": "cross-env CI=false react-scripts build",
+  "outputDirectory": "build",
+  "framework": "create-react-app",
   "rewrites": [
     {
       "source": "/((?!.*\\.(pdf|ico|png|jpg|jpeg|svg|txt|json|js|css|woff|woff2|ttf|eot)$).*)",
