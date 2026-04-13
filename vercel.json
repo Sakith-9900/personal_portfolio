@@ -7,7 +7,7 @@
   ],
   "headers": [
     {
-      "source": "/(.*\\.pdf)",
+      "source": "/sakith_cv.pdf",
       "headers": [
         {
           "key": "Content-Type",
@@ -15,7 +15,7 @@
         },
         {
           "key": "Content-Disposition",
-          "value": "inline"
+          "value": "inline; filename=\"sakith_cv.pdf\""
         }
       ]
     }
