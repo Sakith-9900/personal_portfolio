@@ -7,7 +7,7 @@
   ],
   "headers": [
     {
-      "source": "/(.*\.pdf)",
+      "source": "/(.*\\.pdf)",
       "headers": [
         {
           "key": "Content-Type",
@@ -19,15 +19,5 @@
         }
       ]
     }
-  ],
-  "env": {
-    "CI": "false",
-    "SKIP_PREFLIGHT_CHECK": "true"
-  },
-  "build": {
-    "env": {
-      "CI": "false",
-      "SKIP_PREFLIGHT_CHECK": "true"
-    }
-  }
+  ]
 }
