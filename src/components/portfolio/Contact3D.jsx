@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
@@ -10,17 +11,18 @@ const socialLinks = [
   { icon: Github, label: 'GitHub', href: 'https://github.com/Sakith-9900', color: '#fff' },
   { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/sakith-gunarathna/', color: '#0077b5' },
   { icon: Twitter, label: 'Twitter', href: 'https://x.com/home', color: '#1da1f2' },
-  { icon: Mail, label: 'Email', href: 'sakithmandira@gmail.com', color: '#ea4335' },
+  { icon: Mail, label: 'Email', href: 'mailto:sakithmandira@gmail.com', color: '#ea4335' },
 ];
 
 const contactInfo = [
   { icon: Mail, label: 'Email', value: 'sakithmandira@gmail.com' },
   { icon: Phone, label: 'Phone', value: '+94 77 007 6363' },
-  { icon: MapPin, label: 'Location', value: 'Colombo,Srilanka' },
+  { icon: MapPin, label: 'Location', value: 'Colombo, Sri Lanka' },
 ];
 
 export default function Contact3D() {
   const containerRef = useRef(null);
+  const formRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [focusedField, setFocusedField] = useState(null);
@@ -30,15 +32,34 @@ export default function Contact3D() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-    toast.success('Message sent successfully!', {
-      description: "I'll get back to you as soon as possible.",
-    });
+    if (!serviceId || !templateId || !publicKey) {
+      toast.error('Email service is not configured.', {
+        description: 'Please check the environment variables.',
+      });
+      setIsSubmitting(false);
+      return;
+    }
 
-    setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
+    try {
+      await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+
+      toast.success('Message sent successfully! 🎉', {
+        description: "Thanks for reaching out! I'll get back to you as soon as possible.",
+      });
+
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast.error('Failed to send message.', {
+        description: 'Something went wrong. Please try emailing me directly at sakithmandira@gmail.com',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -159,7 +180,7 @@ export default function Contact3D() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="lg:col-span-3"
           >
-            <form onSubmit={handleSubmit} className="relative">
+            <form ref={formRef} onSubmit={handleSubmit} className="relative">
               {/* Form glow */}
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-xl opacity-50" />
 
@@ -175,6 +196,7 @@ export default function Contact3D() {
                     <div className="relative">
                       <Input
                         type="text"
+                        name="from_name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         onFocus={() => setFocusedField('name')}
@@ -202,6 +224,7 @@ export default function Contact3D() {
                     <div className="relative">
                       <Input
                         type="email"
+                        name="from_email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         onFocus={() => setFocusedField('email')}
@@ -228,6 +251,7 @@ export default function Contact3D() {
                     <label className="block text-sm font-medium text-gray-400 mb-2">Your Message</label>
                     <div className="relative">
                       <Textarea
+                        name="message"
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         onFocus={() => setFocusedField('message')}
