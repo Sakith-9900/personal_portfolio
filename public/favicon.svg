@@ -1,22 +1,60 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Gradient stroke: cyan to purple (matches signature) -->
+    <linearGradient id="sigGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#67e8f9"/>
       <stop offset="100%" stop-color="#a855f7"/>
     </linearGradient>
+
+    <!-- Wide soft cyan glow -->
+    <filter id="glowWide" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Tight crisp glow -->
+    <filter id="glowCrisp" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
 
-  <!-- Dark navy background -->
-  <rect width="64" height="64" rx="12" fill="#050510"/>
+  <!-- Dark navy background with rounded corners -->
+  <rect width="64" height="64" rx="13" fill="#050510"/>
 
-  <!-- SM text -->
+  <!-- Outer cyan glow layer -->
   <text
-    x="32"
-    y="46"
+    x="32" y="46"
     text-anchor="middle"
-    font-family="Georgia, serif"
+    font-family="'Palatino Linotype', Palatino, Georgia, serif"
+    font-style="italic"
     font-weight="bold"
-    font-size="30"
-    fill="url(#grad)"
-  >SM</text>
+    font-size="46"
+    fill="none"
+    stroke="rgba(103,232,249,0.45)"
+    stroke-width="2"
+    filter="url(#glowWide)"
+  >S</text>
+
+  <!-- Crisp white stroke -->
+  <text
+    x="32" y="46"
+    text-anchor="middle"
+    font-family="'Palatino Linotype', Palatino, Georgia, serif"
+    font-style="italic"
+    font-weight="bold"
+    font-size="46"
+    fill="none"
+    stroke="rgba(255,255,255,0.92)"
+    stroke-width="0.9"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    filter="url(#glowCrisp)"
+  >S</text>
 </svg>
